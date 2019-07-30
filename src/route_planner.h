@@ -20,6 +20,11 @@ class RoutePlanner {
 
     RouteModel::Node *start_node;
     RouteModel::Node *end_node;
+    std::vector<RouteModel::Node*> open_list;
     float distance;
     std::vector<RouteModel::Node> ConstructFinalPath(RouteModel::Node *current_node);
+    float CalculateHValue(const RouteModel::Node *node);
+    RouteModel::Node *NextNode();
+    static bool Compare(RouteModel::Node *first, RouteModel::Node *second);
+    void AddNeighbors(RouteModel::Node *current_node);
 };
