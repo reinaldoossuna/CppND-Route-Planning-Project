@@ -6,14 +6,27 @@ This is the starter code for the Route Planning project. Instructions for each e
 
 When cloning this project, be sure to use the `--recurse-submodules` flag. Using HTTPS:
 ```
-git clone https://github.com/udacity/CppND-Route-Planning-Project.git --recurse-submodules
-```
-or with SSH:
-```
-git clone git@github.com:udacity/CppND-Route-Planning-Project.git --recurse-submodules
+git clone https://github.com/reinaldoossuna/CppND-Route-Planning-Project --recurse-submodules
 ```
 
 ## Compiling and Running
+
+### Docker
+
+If you want to use Docker to build this project, you need first to compile the Docker image.
+
+Dockerfile is almost the same as in https://github.com/MrD504/cpp-route-docker, i did just some change to the entrypoint and the folder of the thirdpart
+
+```
+docker build -t cpp .
+```
+
+add this line to your .bashrc
+
+```
+alias rrp='docker run --rm -v <global-path-to>/CppND-Route-Planning-Project/:/CppND-Route-Planning-Project cpp'
+```
+
 
 ### Compiling
 To compile the project, first, create a `build` directory and change to that directory:
@@ -25,6 +38,15 @@ From within the `build` directory, then run `cmake` and `make` as follows:
 cmake ..
 make
 ```
+
+#### Using docker image
+
+```
+rrp cmake ..
+rrp make
+```
+
+
 ### Running
 The executables will be placed in the `bin` directory. From within `build`, you can run the project as follows:
 ```
@@ -38,6 +60,14 @@ For exercises that have unit tests, the project must be built with the approprat
 cmake -DTESTING="RouteModel" ..
 make
 ```
+
+#### Using docker image
+
+```
+rrp cmake -DTESTING="RouteModel"..
+rrp make
+```
+
 Those commands will build the code with the tests for the "Fill Out Route Model" exercise. The tests can then be run from the `build` directory as follows:
 ```
 ../bin/test
@@ -55,4 +85,5 @@ Exercises with tests will specify which string to pass with `-DTESTING`, but a t
 | Find the Closest Node       |       "FindClosest"      |
 | Write the A\* Search Stub   |        "AStarStub"       |
 | Finish A\* Search           |       "AStarSearch"      |
+
 
